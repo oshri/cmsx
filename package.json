@@ -1,0 +1,56 @@
+{
+    "name": "cmsx-node-angular-ssr",
+    "version": "0.0.0",
+    "description": "",
+    "main": "lib/index",
+    "typings": "lib/index",
+    "scripts": {
+        "clean": "rimraf coverage build tmp",
+        "start": "npm run dev",
+        "dev": "NODE_ENV=development ts-node ./server",
+        "build": "tsc -p tsconfig.release.json",
+        "test": "jest --coverage",
+        "test:coverage": "jest --runInBand --coverage",
+        "test:snapshot": "jest --coverage -u",
+        "test:watch": "jest --clearCache && jest --watch",
+        "test:ci": "jest --runInBand"
+    },
+    "keywords": [],
+    "authors": [
+        {
+            "name:": "Oshri Kdoshim",
+            "email": "cms.x.seo@gmail.com"
+        }
+    ],
+    "dependencies": {
+        "body-parser": "^1.18.3",
+        "compression": "^1.7.3",
+        "cookie-parser": "^1.4.3",
+        "cors": "^2.8.4",
+        "dotenv": "^6.0.0",
+        "errorhandler": "^1.5.0",
+        "express": "^4.16.3",
+        "express-session": "^1.15.6",
+        "jsonwebtoken": "^8.3.0",
+        "mongoose": "^5.2.4",
+        "morgan": "^1.9.0",
+        "ts-node-dev": "^1.0.0-pre.26",
+        "winston": "^3.0.0"
+    },
+    "devDependencies": {
+        "@types/jest": "~22.2.3",
+        "@types/node": "^10.5.1",
+        "@types/mongodb": "^3.0.9",
+        "@types/mongoose": "^5.0.5",
+        "@types/morgan": "^1.7.35",
+        "jest": "~23.1.0",
+        "nodemon": "^1.17.5",
+        "rimraf": "~2.6.2",
+        "sinon": "^6.1.4",
+        "ts-jest": "~22.4.6",
+        "ts-node": "^7.0.0",
+        "tslint": "~5.10.0",
+        "tsutils": "~2.27.1",
+        "typescript": "^2.9.2"
+    }
+}
