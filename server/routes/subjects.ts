@@ -26,12 +26,14 @@ export default class SubjectRoute extends BaseRoute {
         router.post("/subjects", (req: Request, res: Response, next: NextFunction) => {
             new SubjectRoute().create(req, res, next);
         });
-        // router.delete("/sujects", async (req: Request, res: Response, next: NextFunction) => {
-        //     await new SubjectRoute().delete(req, res, next);
-        // });
-        // router.put("/subjects", async (req: Request, res: Response, next: NextFunction) => {
-        //     await new SubjectRoute().update(req, res, next);
-        // });
+
+        router.delete("/subjects", async (req: Request, res: Response, next: NextFunction) => {
+            await new SubjectRoute().delete(req, res, next);
+        });
+
+        router.put("/subjects", async (req: Request, res: Response, next: NextFunction) => {
+            await new SubjectRoute().update(req, res, next);
+        });
     }
 
     /**
@@ -62,10 +64,35 @@ export default class SubjectRoute extends BaseRoute {
     }
 
     public async delete(req: Request, res: Response, next: NextFunction) {
-
+        const checkProps = this.checkProps(req.body, "id");
+        if (!checkProps.isProp) {
+            return this.logErrorAndNext("Delete Subject didn't get a relevant find field (id) in the body",
+                {}, req.body, next, res, 400);
+        } else {
+            const body = req.body;
+            const subDel = await Subject
+                .update({_id: body.id}, {deleted: true})
+                .then(async () => {
+                    res.status(200).json({success: true});
+                })
+                .catch(error => res.status(500).json({error}));    
+        }
     };
 
     public async update(req: Request, res: Response, next: NextFunction) {
-
+        const checkProps = this.checkProps(req.body, "id");
+        if (!checkProps.isProp) {
+            return this.logErrorAndNext("Update Subject didn't get a relevant find field (id) in the body",
+                {}, req.body, next, res, 400);
+        } else {
+            const body = req.body;
+            const subDel = await Subject
+                .update({_id: body.id}, body)
+                .then(async (doc) => {
+                    if(!doc) {res.status(404).json({success: false});}
+                    res.status(200).json({success: true});
+                })
+                .catch(error => res.status(500).json({error}));    
+        }
     }
 }

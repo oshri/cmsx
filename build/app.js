@@ -83,20 +83,20 @@ class App {
         });
         //error handling
         this.express.use(errorHandler());
+        // TODO : Remove cors after add client & srs
         // Add WhiteList For Cors to support localhost:4200 & heroku
-        const whiteLIst = ['http://localhost:4200'];
-        const corsOptions = {
-            origin: function (origin, callback) {
-                if (whiteLIst.indexOf(origin) !== -1) {
-                    callback(null, true);
-                }
-                else {
-                    console.error("Invalid origin", origin);
-                    callback(new Error('Not allowed by CORS'));
-                }
-            },
-            optionsSuccessStatus: 200
-        };
+        // const whiteLIst = ['http://localhost:4200'];
+        // const corsOptions = {
+        //     origin: function (origin: string, callback: Function) {
+        //         if (whiteLIst.indexOf(origin) !== -1) {
+        //             callback(null, true);
+        //         } else {
+        //             console.error("Invalid origin", origin);
+        //             callback(new Error('Not allowed by CORS'));
+        //         }
+        //     },
+        //     optionsSuccessStatus: 200
+        // };
         // this.express.use(cors(corsOptions));
     }
     /**

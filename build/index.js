@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const http = require("http");
 const dotenv = require("dotenv");
 const app_1 = require("./app");
-var debug = require("debug")("express:server");
+const debug = require("debug")("express:server");
 dotenv.config({ path: '.env' });
 const httpPort = process.env.PORT || 8080;
 const server = app_1.default.bootstrap().express;
