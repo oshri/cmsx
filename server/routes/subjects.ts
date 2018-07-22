@@ -54,7 +54,8 @@ export default class SubjectRoute extends BaseRoute {
                 {}, req.body, next, res, 400);
         } else {
             const subject = new Subject(req.body);
-            subject.save().then(async () => {
+            subject.save().then(async (doc) => {
+                console.log(doc);
                 res.status(200).json({success: true, id: subject.id});
             }).catch(reason => {
                 res.status(500).json({error: reason});

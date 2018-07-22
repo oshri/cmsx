@@ -6,7 +6,8 @@ https/
 /tmp
 
 .env
-/build/*
+/build
+build/*
 dist/
 node_modules/
 *.gz

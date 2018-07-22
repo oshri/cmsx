@@ -23,7 +23,7 @@ export interface IEntityModel extends IEntity, Document {
 
 export const EntityKeys = {
     deleted: {type: Boolean, require: false, default: false},
-    name: {type: String, required: true, default: false},
+    name: {type: String, required: true},
     description: {type: String, required: false},
     testing: {type: Boolean, required: false, default: false},
     parent: {type: String, required: false},
