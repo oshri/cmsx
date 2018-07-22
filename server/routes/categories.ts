@@ -78,7 +78,7 @@ export default class CategoriesRoute extends BaseRoute {
         } else {
             const body = req.body;
             const category = await Category
-                .update({_id: body.id}, {deleted: true})
+                .update({id: body.id}, {deleted: true})
                 .then(() => res.status(200).json({success: true}))
                 .catch(error => res.status(500).json({error}));    
         }
@@ -92,7 +92,7 @@ export default class CategoriesRoute extends BaseRoute {
         } else {
             const body = req.body;
             const category = await Category
-                .update({_id: body.id}, body)
+                .update({id: body.id}, body)
                 .then(async (doc) => {
                     if(!doc) {res.status(404).json({success: false})}
                     res.status(200).json({success: true});

@@ -16,6 +16,7 @@ dotenv.config({ path: ".env" });
 import IndexRoute from "./routes/index";
 import SubjectRoute from './routes/subjects';
 import CategoryRoute from './routes/categories';
+import PageRoute from './routes/pages';
 
 /**
  * The server.
@@ -140,6 +141,7 @@ export default class App {
         IndexRoute.create(router);
         SubjectRoute.create(router);
         CategoryRoute.create(router);
+        PageRoute.create(router);
 
         this.express.use(router);
     }

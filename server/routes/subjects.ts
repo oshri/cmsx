@@ -101,7 +101,7 @@ export default class SubjectRoute extends BaseRoute {
 		} else {
 			const body = req.body;
 			const subDel = await Subject.update(
-				{ _id: body.id },
+				{ id: body.id },
 				{ deleted: true, active: false }
 			)
 				.then(async () => res.status(200).json({ success: true }))
@@ -122,7 +122,7 @@ export default class SubjectRoute extends BaseRoute {
 			);
 		} else {
 			const body = req.body;
-			const subDel = await Subject.update({ _id: body.id }, body)
+			const subDel = await Subject.update({ id: body.id }, body)
 				.then(async doc => {
 					if (!doc) {
 						res.status(404).json({ success: false });
